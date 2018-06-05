@@ -39,13 +39,15 @@ include "db-connection.php";
         <div class="col-sm-8 blog-main">
 
             <div class="blog-post">
-            <?php
+
+<?php
     foreach ($posts as $post) {
 ?>
+
                 <h2 class="blog-post-title"><?php echo ($post["Title"]) ?></h2>
                 <p class="blog-post-meta"><?php echo ($post["Created_at"]) . " " ?><a href="#"><?php echo ($post["Author"]) ?></a></p>
 
-                <p><?php echo ($post["Title"]) ?></p>
+                <p><?php echo ($post["Body"]) ?></p>
                 <hr>
                 <p><?php echo ($post["Body"]) ?></p>
                 <h2>Heading</h2>

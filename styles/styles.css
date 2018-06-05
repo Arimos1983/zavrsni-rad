@@ -13,6 +13,9 @@ h1,h2,h3,h4,h5,h6,a{
 a:hover{
     color:#b34848;
 }
+.comment ul li{
+    list-style: none;
+}
 
 
 insert into posts (id, Title, Body, Author) values (1,"Prvi naslov","Neki text vezano za prvi naslov","Mile Peric");
