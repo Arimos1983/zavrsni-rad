@@ -10,7 +10,7 @@ include "db-connection.php";
 <?php
 
     // pripremamo upit
-    $sql = "SELECT * FROM posts ORDER BY created_at ASC";
+    $sql = "SELECT * FROM posts ORDER BY created_at DESC";
     $statement = $connection->prepare($sql);
 
     // izvrsavamo upit
