@@ -8,10 +8,10 @@ $id=$_GET["id"];
 try {
         
         $sql = "DELETE FROM comments WHERE Post_id=$id";
-
-        // use exec() because no results are returned
         $connection->exec($sql);
-        //echo "Record deleted successfully";
+        $sql = "DELETE FROM posts WHERE id=$id";
+        $connection->exec($sql);
+        
     }
 catch(PDOException $e)
     {
@@ -20,7 +20,7 @@ catch(PDOException $e)
 
 $conn = null;
 
-        header("Location: single-post.php?id=$id");
+        header("Location: index.php");
         exit;
     
 

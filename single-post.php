@@ -57,7 +57,8 @@ $error=null;
 
 
                 <h2 class="blog-post-title"><?php echo ($posts["Title"]) ?></h2>
-                <form method="post" action="delete-post.php?id=<?php echo ($posts["id"]) ?>"><button class="btn btn-default float-right">Delete post</button></form></li>
+                <!--Dugme za brisanje posta -->
+                <form onsubmit="return confirm('Dali ste sigurni da hocete da obrisete vas post');" method="post" action="delete-post.php?id=<?php echo ($posts["id"]) ?>"><button class="btn btn-default float-right">Delete post</button></form></li>
                 <p class="blog-post-meta"><?php echo ($posts["Created_at"]) . " " ?><a href="#"><?php echo ($posts["p_Author"]) ?></a></p>
 
                 <p><?php echo ($posts["Body"]) ?></p>
