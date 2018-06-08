@@ -1,7 +1,7 @@
 <?php
 
     // pripremamo upit
-    $sql = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 5";
+    $sql = "SELECT users.id as u_id, users.First_Name, users.Last_Name, posts.id, posts.Title, posts.Body, posts.Created_at, posts.User_id FROM users INNER JOIN posts on users.id=posts.User_id ORDER BY created_at DESC";
     $statement = $connection->prepare($sql);
 
     // izvrsavamo upit
@@ -12,7 +12,7 @@
     $statement->setFetchMode(PDO::FETCH_ASSOC);
 
     // punimo promenjivu sa rezultatom upita
-    $posts = $statement->fetchAll();
+    $users = $statement->fetchAll();
 
     // koristite var_dump kada god treba da proverite sadrzaj neke promenjive
         echo '<pre>';
@@ -25,10 +25,10 @@
 <aside class="col-sm-3 ml-sm-auto blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>Latest posts</h4>
-                <?php foreach ($posts as $post) { ?>
+                <?php foreach ($users as $user) { ?>
 
                     <ul >
-                        <li><a href="single-post.php?id=<?php echo ($post["id"]) ?>" ><?php echo ($post["Title"]) ?></a></li>
+                        <li><a href="single-post.php?id=<?php echo ($user["id"]) ?>" ><?php echo ($user["Title"]) ?></a></li>
                     </ul>
                     
                 <?php } ?>

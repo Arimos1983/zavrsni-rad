@@ -13,6 +13,7 @@ try {
         $connection->exec($sql);
         
     }
+    
 catch(PDOException $e)
     {
         echo $sql . "<br>" . $e->getMessage();
@@ -20,8 +21,8 @@ catch(PDOException $e)
 
 $conn = null;
 
-        header("Location: index.php");
-        exit;
+header("Location: index.php");
+exit;
     
 
 

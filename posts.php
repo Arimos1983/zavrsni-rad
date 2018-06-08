@@ -9,7 +9,7 @@ include "db-connection.php";
 <?php
 
     // pripremamo upit
-    $sql = "SELECT * FROM posts ORDER BY created_at ASC LIMIT 3";
+    $sql = "SELECT users.id as u_id, users.First_Name, users.Last_Name, posts.id, posts.Title, posts.Body, posts.Created_at, posts.User_id FROM users INNER JOIN posts on users.id=posts.User_id ORDER BY created_at DESC";
     $statement = $connection->prepare($sql);
 
     // izvrsavamo upit
@@ -20,7 +20,7 @@ include "db-connection.php";
     $statement->setFetchMode(PDO::FETCH_ASSOC);
 
     // punimo promenjivu sa rezultatom upita
-    $posts = $statement->fetchAll();
+    $users = $statement->fetchAll();
 
     // koristite var_dump kada god treba da proverite sadrzaj neke promenjive
         echo '<pre>';
@@ -41,15 +41,15 @@ include "db-connection.php";
             <div class="blog-post">
 
 <?php
-    foreach ($posts as $post) {
+    foreach ($users as $user) {
 ?>
 
-                <h2 class="blog-post-title"><?php echo ($post["Title"]) ?></h2>
-                <p class="blog-post-meta"><?php echo ($post["Created_at"]) . " " ?><a href="#"><?php echo ($post["Author"]) ?></a></p>
+                <h2 class="blog-post-title"><?php echo ($user["Title"]) ?></h2>
+                <p class="blog-post-meta"><?php echo ($user["Created_at"]) . " " ?><a href="#"><?php echo ($user["First_Name"] ." " . $user["Last_Name"]) ?></a></p>
 
-                <p><?php echo ($post["Body"]) ?></p>
+                <p><?php echo ($user["Body"]) ?></p>
                 <hr>
-                <p><?php echo ($post["Body"]) ?></p>
+                <p><?php echo ($user["Body"]) ?></p>
                 <h2>Heading</h2>
                 <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                 <h3>Sub-heading</h3>
